@@ -12,6 +12,6 @@ json='{"tag_name":"v1.0.'"$GITHUB_RUN_NUMBER"'","name":"v1.0.'"$GITHUB_RUN_NUMBE
 newrelease=$(curl -s -X POST -H "$accept" -H "$auth" -H "$apiversion" "$baseurl/releases" -d "$json")
 RELEASE_ID=$(jq -r '.id' <<< "$newrelease")
 
-curl -s -X POST -H "$accept" -H "$auth" -H "$apiversion" "$baseurluploads/releases/$RELEASE_ID/assets?name=pkg.tar.gz" --data-binary "@pkg.tar.gz" -H "$contenttype" > /dev/null
+curl -s -X POST -H "$accept" -H "$auth" -H "$apiversion" "$baseurluploads/releases/$RELEASE_ID/assets?name=vendor.tar.gz" --data-binary "@vendor.tar.gz" -H "$contenttype" > /dev/null
 
 echo 'Done!'
